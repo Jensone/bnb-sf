@@ -1,0 +1,45 @@
+/* Path: public/css/custom.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+.nav-bottom a {
+    text-decoration: none;
+}
+
+.title,
+.subtitle {
+    font-family: 'Libre Franklin', sans-serif !important;
+    font-weight: 900;
+    font-size: 15rem;
+    line-height: 0.85;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.subtitle-regular,
+.subtitle {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: .5rem;
+    -webkit-text-stroke-color: #fff;
+}
+
+.subtitle {
+    transform: rotate(-180deg);
+}
+
+.btn-custom {
+    background-color: #FE1F70;
+    color: #fff;
+}
