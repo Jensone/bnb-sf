@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Location courte durée à Paris{% endblock %}
+{% block title %}Location courte durée à {{ title }}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href={{ asset('css/paris.css') }}>
+    <link rel="stylesheet" href={{ background }}>
 {% endblock %}
 
 {% block body %}
 	<div class="vh-100 d-flex column justify-content-center align-items-center">
 		<div class="text-center">
-			<p class="title">Paris</p>
-			<p class="subtitle">Paris</p>
+			<p class="title">{{ title }}</p>
+			<p class="subtitle">{{ subtitle }}</p>
 			<a href="#" class="mt-5 btn btn-custom btn-lg rounded-pill">
 				Accéder
 			</a>

@@ -1,0 +1,9 @@
+body {
+    background-image: url('/images/kyoto.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.subtitle {
+    transform: inherit;
+}

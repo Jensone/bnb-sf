@@ -28,18 +28,19 @@ h6 {
     color: #fff;
 }
 
-.subtitle-regular,
 .subtitle {
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-width: .5rem;
     -webkit-text-stroke-color: #fff;
-}
-
-.subtitle {
     transform: rotate(-180deg);
 }
 
 .btn-custom {
     background-color: #FE1F70;
     color: #fff;
+}
+
+.btn-custom:hover {
+    background-color: #ffffff;
+    color: #000;
 }
