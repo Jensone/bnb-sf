@@ -17,7 +17,7 @@
             </div>
         {% else %}
 
-        <form method="post" class="col-4 m-auto bg-light p-3 rounded">
+        <form method="post" class="col-md-4 col-sm-10 m-auto bg-light p-3 rounded">
             <h1 class="h3 mb-3 fw-normal text-center">Connexion</h1>
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
