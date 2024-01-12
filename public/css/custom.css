@@ -22,7 +22,7 @@ h6 {
 .subtitle {
     font-family: 'Libre Franklin', sans-serif !important;
     font-weight: 900;
-    font-size: 15rem;
+    font-size: 15vh;
     line-height: 0.85;
     text-transform: uppercase;
     color: #fff;
