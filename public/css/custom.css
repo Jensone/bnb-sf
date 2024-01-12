@@ -18,6 +18,11 @@ h6 {
     text-decoration: none;
 }
 
+span.active {
+    color: #FE1F70;
+    font-weight: 500;
+}
+
 .title,
 .subtitle {
     font-family: 'Libre Franklin', sans-serif !important;
