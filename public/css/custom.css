@@ -32,11 +32,6 @@ span.active,
     color: rgba(254, 31, 113, 0.75);
 }
 
-/* .footer-nav {
-    background: rgb(16, 16, 16);
-    background: linear-gradient(0deg, rgba(16, 16, 16, 0.8) 0%, rgba(39, 35, 58, 0) 100%);
-} */
-
 /* City background images */
 .paris {
     background-image: url('/images/hong-kong.jpg');
@@ -69,6 +64,8 @@ span.active,
     background-attachment: fixed;
 }
 
+
+/* Title and subtitle */
 .title,
 .subtitle {
     font-family: 'Libre Franklin', sans-serif !important;
@@ -99,6 +96,7 @@ span.active,
     background-color: #ffffff;
     color: #000;
 }
+
 
 /* Media Queries */
 @media (max-width: 768px) {

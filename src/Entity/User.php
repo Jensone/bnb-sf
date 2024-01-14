@@ -44,7 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $lastname = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = '/images/avatar.png';
+    private ?string $image = 'https://api.iconify.design/mdi:account-circle.svg';
 
     public function __construct()
     {
