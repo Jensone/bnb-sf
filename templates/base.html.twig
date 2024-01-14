@@ -23,7 +23,7 @@
 		{% endblock %}
 	</head>
 	<body>
-		<header class="d-flex flex-wrap justify-content-center p-3 mb-4">
+		<header class="d-flex flex-wrap justify-content-center p-2 align-items-center bg-dark">
 			<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
 				<img src={{ asset('images/icon.svg') }} alt="logo bnb" width="60">
 			</a>
@@ -37,10 +37,10 @@
 				</li>
 			</ul>
 		</header>
-        <div class="container-fluid">
+        <main>
 		    {% block body %}{% endblock %}
-        </div>
-		<nav class="fixed-bottom py-4 footer-nav">
+        </main>
+		<nav class="fixed-bottom py-4 footer-nav d-none d-sm-block">
 			<div class="container-fluid text-center nav-bottom">
 				<a class="text-light" href={{ path('paris') }}>
 					<span class="">Paris </span>•

@@ -14,7 +14,7 @@ class PageController extends AbstractController
         return $this->render('page/city.html.twig', [
             'title' => 'paris',
             'subtitle' => 'paris',
-            'background' => 'css/paris.css'
+            'background' => 'paris'
         ]);
     }
     #[Route('/las-vegas', name: 'lasvegas')]
@@ -23,7 +23,7 @@ class PageController extends AbstractController
         return $this->render('page/city.html.twig', [
             'title' => 'las vegas',
             'subtitle' => 'las vegas',
-            'background' => 'css/lasvegas.css'
+            'background' => 'lasvegas'
 
         ]);
     }
@@ -33,7 +33,7 @@ class PageController extends AbstractController
         return $this->render('page/city.html.twig', [
             'title' => 'kyoto',
             'subtitle' => '京都市',
-            'background' => 'css/kyoto.css'
+            'background' => 'kyoto'
 
         ]);
     }
@@ -43,7 +43,7 @@ class PageController extends AbstractController
         return $this->render('page/city.html.twig', [
             'title' => 'sydney',
             'subtitle' => 'sydney',
-            'background' => 'css/sydney.css'
+            'background' => 'sydney'
 
         ]);
     }
@@ -53,7 +53,7 @@ class PageController extends AbstractController
         return $this->render('page/city.html.twig', [
             'title' => 'hong kong',
             'subtitle' => '香港',
-            'background' => 'css/hongkong.css'
+            'background' => 'hongkong'
 
         ]);
     }
