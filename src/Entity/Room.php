@@ -25,7 +25,7 @@ class Room
     private ?string $slug = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $image = null;
+    private ?string $image = '/images/room-default.jpg';
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
