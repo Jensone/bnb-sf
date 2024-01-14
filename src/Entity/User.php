@@ -46,9 +46,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = 'https://api.iconify.design/mdi:account-circle.svg?color=%23ffffff';
 
+    #[ORM\ManyToMany(targetEntity: Room::class)]
+    private Collection $favorites;
+
     public function __construct()
     {
-        $this->rooms = new ArrayCollection();
+        $this->favorites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -200,6 +203,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setImage(?string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Room>
+     */
+    public function getFavorites(): Collection
+    {
+        return $this->favorites;
+    }
+
+    public function addFavorite(Room $favorite): static
+    {
+        if (!$this->favorites->contains($favorite)) {
+            $this->favorites->add($favorite);
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(Room $favorite): static
+    {
+        $this->favorites->removeElement($favorite);
 
         return $this;
     }
