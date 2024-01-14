@@ -36,9 +36,10 @@ span.active,
     color: rgba(254, 31, 113, 0.75);
 }
 
-#map {
-    height: 180px;
+.profile-n-3 {
+    margin-top: -3rem !important;
 }
+
 
 /* City background images */
 .paris {
@@ -110,6 +111,7 @@ span.active,
     background-color: #ffffff;
     color: #000;
 }
+
 
 /* Rooms card */
 .img-card-custom {
