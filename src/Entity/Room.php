@@ -49,9 +49,13 @@ class Room
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $updated_at = null;
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favorites')]
+    private Collection $lovers;
+
     public function __construct()
     {
         $this->equipments = new ArrayCollection();
+        $this->lovers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -187,6 +191,33 @@ class Room
     public function setUpdatedAt(\DateTimeInterface $updated_at): static
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getLovers(): Collection
+    {
+        return $this->lovers;
+    }
+
+    public function addLover(User $lover): static
+    {
+        if (!$this->lovers->contains($lover)) {
+            $this->lovers->add($lover);
+            $lover->addFavorite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLover(User $lover): static
+    {
+        if ($this->lovers->removeElement($lover)) {
+            $lover->removeFavorite($this);
+        }
 
         return $this;
     }

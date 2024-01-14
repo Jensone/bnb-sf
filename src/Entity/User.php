@@ -46,7 +46,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = 'https://api.iconify.design/mdi:account-circle.svg?color=%23ffffff';
 
-    #[ORM\ManyToMany(targetEntity: Room::class)]
+    #[ORM\ManyToMany(targetEntity: Room::class, inversedBy: 'lovers')]
     private Collection $favorites;
 
     public function __construct()
