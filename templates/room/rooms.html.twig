@@ -5,10 +5,7 @@
 {% endblock %}
 
 {% block body %}
-	{{ dump(rooms) }}
-	<h1 class="text-center my-5">Où souhaitez-vous séjourner à
-		{{ city }}
-		?</h1>
+	<h1 class="text-center my-5">Où souhaitez-vous séjourner à {{ city }} ?</h1>
 	<div class="row gap-3 justify-content-center" id="rooms">
 		<div class="row">
 			{% for item in rooms %}
@@ -25,7 +22,7 @@
 					</div>
 				</a>
 			{% endfor %}
-
+                {{ knp_pagination_render(rooms) }}
 		</div>
 	</div>
 {% endblock %}
