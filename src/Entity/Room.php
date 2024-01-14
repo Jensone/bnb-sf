@@ -52,10 +52,18 @@ class Room
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'favorites')]
     private Collection $lovers;
 
+    #[ORM\OneToMany(mappedBy: 'room', targetEntity: Review::class)]
+    private Collection $reviews;
+
+    #[ORM\ManyToMany(targetEntity: Booking::class, mappedBy: 'host')]
+    private Collection $bookings;
+
     public function __construct()
     {
         $this->equipments = new ArrayCollection();
         $this->lovers = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
+        $this->bookings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -217,6 +225,63 @@ class Room
     {
         if ($this->lovers->removeElement($lover)) {
             $lover->removeFavorite($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Review>
+     */
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function addReview(Review $review): static
+    {
+        if (!$this->reviews->contains($review)) {
+            $this->reviews->add($review);
+            $review->setRoom($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReview(Review $review): static
+    {
+        if ($this->reviews->removeElement($review)) {
+            // set the owning side to null (unless already changed)
+            if ($review->getRoom() === $this) {
+                $review->setRoom(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Booking>
+     */
+    public function getBookings(): Collection
+    {
+        return $this->bookings;
+    }
+
+    public function addBooking(Booking $booking): static
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings->add($booking);
+            $booking->addHost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBooking(Booking $booking): static
+    {
+        if ($this->bookings->removeElement($booking)) {
+            $booking->removeHost($this);
         }
 
         return $this;
