@@ -30,7 +30,6 @@ class AppFixtures extends Fixture
                 ->setRoles(['ROLE_HOST'])
                 ->setFirstname($faker->firstName)
                 ->setLastname($faker->lastName)
-                ->setImage('https://placehold.it/64x64')
                 ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2');
             $manager->persist($host);
             array_push($hosts, $host);
@@ -51,7 +50,6 @@ class AppFixtures extends Fixture
             $room->setName($faker->words(3, true))
                 ->setSlug($faker->slug)
                 ->setCity($faker->randomElement($cities))
-                ->setImage('/images/paris.jpg')
                 ->addEquipment($faker->randomElement($equipmentArray))
                 ->addEquipment($faker->randomElement($equipmentArray))
                 ->setDescription($faker->paragraphs(3, true))
