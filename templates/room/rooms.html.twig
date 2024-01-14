@@ -22,7 +22,7 @@
 							<form action="" method="post" class="mt-2 text-end">
 								{% if app.user %}
 									{% if item.id|number_format in app.user.favorites %}
-                                        <input type="button" name="favorite-on" class="btn btn-light btn-sm rounded-pill" value="&#9733;">
+                                        <input type="button" name="favorite-on" class="btn btn-warring btn-sm rounded-pill" value="&#9733;">
                                         {% else %}
 										<input type="button" name="favorite-off" class="btn btn-light btn-sm rounded-pill" value="&#9734;">
                                     {% endif %}
@@ -40,7 +40,7 @@
 						<p class="fs-6 fw-bold text-dark text-capitalize">{{ item.name }}</p>
 						<p class="text-muted text-capitalize">{{ item.city }}</p>
 						<p class="text-dark">
-							<span class="fw-bold">00€</span>
+							<span class="fw-bold">{{ item.price }}€</span>
 							<span class="text-muted">
 								par nuit</span>
 						</p>
@@ -53,6 +53,7 @@
 		</div>
 	</div>
 
+    {{ include('/partials/bottom-nav-rooms.html.twig') }}
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 {% endblock %}
