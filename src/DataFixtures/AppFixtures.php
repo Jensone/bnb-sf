@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use Faker\Factory;
 use App\Entity\Room;
 use App\Entity\User;
+use App\Entity\Review;
 use App\Entity\Equipment;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -19,18 +20,32 @@ class AppFixtures extends Fixture
         $admin = new User();
         $admin->setEmail('admin@admin.fr')
             ->setRoles(['ROLE_ADMIN'])
-            ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2');
+            ->setFirstname('Admin')
+            ->setLastname('Martin')
+            ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2')
+            ->setImage($faker->randomElement(['default-1', 'default-2']))
+            ->setAddress($faker->address)
+            ->setCity($faker->city)
+            ->setCountry($faker->country)
+            ->setCreatedAt($faker->dateTimeBetween('-1 year'));
         $manager->persist($admin);
 
         // Set hosts
         $hosts = [];
-        for ($i=0; $i < 8; $i++) { 
+        for ($i = 0; $i < 8; $i++) {
             $host = new User();
             $host->setEmail('host' . $i . '@host.fr')
                 ->setRoles(['ROLE_HOST'])
                 ->setFirstname($faker->firstName)
                 ->setLastname($faker->lastName)
-                ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2');
+                ->setBirthyear($faker->numberBetween(1980, 2000))
+                ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2')
+                ->setImage($faker->randomElement(['default-1', 'default-2']))
+                ->setAddress($faker->address)
+                ->setCity($faker->city)
+                ->setCountry($faker->country)
+                ->setCreatedAt($faker->dateTimeBetween('-12 months'))
+                ->setUpdatedAt($faker->dateTimeBetween('-10 months'));
             $manager->persist($host);
             array_push($hosts, $host);
         }
@@ -38,7 +53,7 @@ class AppFixtures extends Fixture
         // Set equipments
         $equipments = ['wifi', 'tv', 'climatiseur', 'lave-linge', 'lave-vaisselle', 'piscine', 'jacuzzi', 'parking'];
         $equipmentArray = [];
-        for ($i=0; $i < count($equipments); $i++) { 
+        for ($i = 0; $i < count($equipments); $i++) {
             $equipment = new Equipment();
             $equipment->setName($equipments[$i]);
             $manager->persist($equipment);
@@ -48,7 +63,7 @@ class AppFixtures extends Fixture
         // Set rooms
         $cities = ['paris', 'las vegas', 'kyoto', 'sydney', 'hong kong'];
         for ($i = 0; $i < 100; $i++) {
-            
+
             $room = new Room();
             $room->setName($faker->words(3, true))
                 ->setSlug($faker->slug)
@@ -58,8 +73,8 @@ class AppFixtures extends Fixture
                 ->setDescription($faker->paragraphs(3, true))
                 ->setHost($faker->randomElement($hosts))
                 ->setPrice($faker->numberBetween(150, 1500))
-                ->setCreatedAt(new \DateTime('now'))
-                ->setUpdatedAt(new \DateTime('now'));
+                ->setCreatedAt($faker->dateTimeBetween('-11 months'))
+                ->setUpdatedAt($faker->dateTimeBetween('-10 months'));
 
             // Add favorites to admin
             if ($i < 10) {
@@ -68,14 +83,34 @@ class AppFixtures extends Fixture
 
             // Set users with favorites
             if ($i > 70) {
-                    $user = new User();
-                    $user->setEmail('user' . $i . '@user.fr')
-                        ->setRoles(['ROLE_USER'])
-                        ->setFirstname($faker->firstName)
-                        ->setLastname($faker->lastName)
-                        ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2')
-                        ->addFavorite($room);
-                    $manager->persist($user);
+                $user = new User();
+                $user->setEmail('user' . $i . '@user.fr')
+                    ->setRoles(['ROLE_USER'])
+                    ->setFirstname($faker->firstName)
+                    ->setLastname($faker->lastName)
+                    ->setBirthyear($faker->numberBetween(1980, 2000))
+                    ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2')
+                    ->setImage($faker->randomElement(['default-1', 'default-2']))
+                    ->setAddress($faker->address)
+                    ->setCity($faker->city)
+                    ->setCountry($faker->country)
+                    ->setCreatedAt($faker->dateTimeBetween('-6 months'))
+                    ->setUpdatedAt($faker->dateTimeBetween('-5 months'))
+                    ->addFavorite($room);
+                $manager->persist($user);
+
+                // Set Reviews
+                $review = new Review();
+                $reviewDate = $faker->dateTimeBetween('-4 months');
+                $review->setRating(mt_rand(1, 5))
+                    ->setTitle($faker->word(3, true))
+                    ->setComment($faker->paragraphs(1, true))
+                    ->setAuthor($user)
+                    ->setRoom($room)
+                    ->setCreatedAt($reviewDate)
+                    ->setUpdatedAt($reviewDate);
+
+                $manager->persist($review);
             }
             $manager->persist($room);
         }
