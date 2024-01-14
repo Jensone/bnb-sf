@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Location courte durée à{{ title }}{% endblock %}
+{% block title %}Location courte durée à{{ title }}
+{% endblock %}
 
 {% block stylesheets %}
 	{{ parent() }}
@@ -16,7 +17,7 @@
 			<p class="subtitle {{ title == 'kyoto' or title == 'hong kong' ? 'subtitle-reverse' : '' }}">
 				{{ subtitle }}
 			</p>
-			<a href="#" class="mt-5 btn btn-custom btn-lg rounded-pill">
+			<a href={{ path('rooms', {'city' : title }) }} class="mt-5 btn btn-custom btn-lg rounded-pill">
 				Accéder
 			</a>
 		</div>

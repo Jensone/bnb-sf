@@ -36,6 +36,10 @@ class Room
     #[ORM\Column(length: 20)]
     private ?string $city = null;
 
+    #[ORM\ManyToOne(inversedBy: 'rooms')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $host = null;
+
     public function __construct()
     {
         $this->equipments = new ArrayCollection();
@@ -126,6 +130,18 @@ class Room
     public function setCity(string $city): static
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getHost(): ?User
+    {
+        return $this->host;
+    }
+
+    public function setHost(?User $host): static
+    {
+        $this->host = $host;
 
         return $this;
     }
