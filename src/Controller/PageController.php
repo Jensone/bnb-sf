@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
+use App\Repository\RoomRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PageController extends AbstractController
 {
-    #[Route('/', name: 'paris')]
+    // Home page
+    #[Route('/', name: 'paris', methods: ['GET'])]
     public function paris(): Response
     {
         return $this->render('page/city.html.twig', [
@@ -17,7 +19,9 @@ class PageController extends AbstractController
             'background' => 'paris'
         ]);
     }
-    #[Route('/las-vegas', name: 'lasvegas')]
+
+    // Las Vegas page
+    #[Route('/las-vegas', name: 'lasvegas', methods: ['GET'])]
     public function lasvegas(): Response
     {
         return $this->render('page/city.html.twig', [
@@ -27,7 +31,9 @@ class PageController extends AbstractController
 
         ]);
     }
-    #[Route('/kyoto', name: 'kyoto')]
+
+    // Kyoto page
+    #[Route('/kyoto', name: 'kyoto', methods: ['GET'])]
     public function kyoto(): Response
     {
         return $this->render('page/city.html.twig', [
@@ -37,7 +43,9 @@ class PageController extends AbstractController
 
         ]);
     }
-    #[Route('/sydney', name: 'sydney')]
+
+    // Sydney page
+    #[Route('/sydney', name: 'sydney', methods: ['GET'])]
     public function sydney(): Response
     {
         return $this->render('page/city.html.twig', [
@@ -47,13 +55,27 @@ class PageController extends AbstractController
 
         ]);
     }
-    #[Route('/hong-kong', name: 'hongkong')]
+
+    // Hong Kong page
+    #[Route('/hong-kong', name: 'hongkong', methods: ['GET'])]
     public function hongkong(): Response
     {
         return $this->render('page/city.html.twig', [
             'title' => 'hong kong',
             'subtitle' => '香港',
             'background' => 'hongkong'
+
+        ]);
+    }
+
+    // Account page
+    #[Route('/account', name: 'account', methods: ['GET', 'POST'])]
+    public function account(
+        RoomRepository $roomRepository,
+    ): Response
+    {
+        return $this->render('page/account.html.twig', [
+            'title' => 'Mon compte',
 
         ]);
     }
