@@ -14,6 +14,10 @@ h6 {
     font-family: 'Libre Franklin', sans-serif;
 }
 
+.lh-05 {
+    line-height: 0.5;
+}
+
 .nav-bottom a {
     text-decoration: none;
 }
@@ -30,6 +34,10 @@ span.active,
 
 .text-bnb:hover {
     color: rgba(254, 31, 113, 0.75);
+}
+
+#map {
+    height: 180px;
 }
 
 /* City background images */
@@ -87,6 +95,12 @@ span.active,
     transform: inherit;
 }
 
+.stroke {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #000000;
+}
+
 .btn-custom {
     background-color: #FE1F70;
     color: #fff;
@@ -97,6 +111,29 @@ span.active,
     color: #000;
 }
 
+/* Rooms card */
+.img-card-custom {
+    position: relative;
+    border-radius: var(--bs-border-radius-xl) !important;
+}
+
+.img-card-custom-overlay {
+    position: absolute;
+    bottom: 0.15rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bnb-shadow-box img {
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 1);
+}
+
+.bnb-shadow-text {
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 1);
+}
 
 /* Media Queries */
 @media (max-width: 768px) {

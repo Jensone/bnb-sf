@@ -4,21 +4,34 @@
 	{{ city}}
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+{% endblock %}
+
 {% block body %}
-	<h1 class="text-center my-5">Où souhaitez-vous séjourner à {{ city }} ?</h1>
+	<h1 class="text-center my-5">Où souhaitez-vous séjourner à <span class="stroke">{{ city }}</span> ?</h1>
+    <div id="map"></div>
 	<div class="row gap-3 justify-content-center" id="rooms">
 		<div class="row">
 			{% for item in rooms %}
-				<a href="#" class="col-lg-3 col-md-4 col-sm-6 text-decoration-none">
-					<img src={{ item.image }} class="img-fluid rounded-4">
-					<div class="d-flex flex-column mt-3 lh-1">
+				<a href="#" class="col-lg-3 col-md-4 col-sm-6 mb-4 text-decoration-none">
+					<div class="img-card-custom rounded-4">
+                        <img src={{ item.image }} class="img-fluid rounded-4">
+                        <div class="img-card-custom-overlay px-2 rounded-4">
+                            <form action="" method="post">
+                                <input type="button" name="favorite" class="btn btn-sm">
+                            </form>
+                            <p class="d-flex gap-2 mb-2 align-items-center bnb-shadow-box">
+                                <img src={{ item.host.image }} width="32" class="image-fluid rounded-pill">
+                                <span class="text-white bnb-shadow-text">{{ item.host.firstname }}</span>
+                            </p>
+                        </div>
+                    </div>
+					<div class="d-flex flex-column mt-3 lh-05">
 						<p class="fs-6 fw-bold text-dark">{{ item.name }}</p>
 						<p class="text-muted">{{ item.city }}</p>
-						<p class="d-flex gap-2 mb-2 align-items-center">
-							<img src={{ item.host.image }} width="32" class="image-fluid rounded-pill">
-							<span class="text-muted">{{ item.host.firstname }}</span>
-						</p>
-						<p class="text-muted">00€ par nuit</p>
+						<p class="text-dark"><span class="fw-bold">00€</span><span class="text-muted"> par nuit</span></p>
 					</div>
 				</a>
 			{% endfor %}
@@ -27,4 +40,7 @@
             </div>
 		</div>
 	</div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
 {% endblock %}

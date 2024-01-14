@@ -41,22 +41,24 @@
 		    {% block body %}{% endblock %}
         </main>
 		<nav class="fixed-bottom py-4 footer-nav d-none d-sm-block">
-			<div class="container-fluid text-center nav-bottom">
-				<a class="text-light" href={{ path('paris') }}>
-					<span class="">Paris </span>•
-				</a>
-                <a class="text-light" href={{ path('lasvegas') }}>
-					<span class="">Las Vegas </span>•
-				</a>
-                <a class="text-light" href={{ path('kyoto') }}>
-					<span class="">Kyoto </span>•
-				</a>
-                <a class="text-light" href={{ path('sydney') }}>
-					<span class="">Sydney </span>•
-				</a>
-                <a class="text-light" href={{ path('hongkong') }}>
-					<span class="">Hong Kong</span>
-				</a>
+			<div class="d-flex justify-content-center nav-bottom">
+				<div class="bg-white py-1 px-3 rounded-pill shadow ">
+					<a class="text-dark" href={{ path('paris') }}>
+						<span class="">Paris </span>•
+					</a>
+					<a class="text-dark" href={{ path('lasvegas') }}>
+						<span class="">Las Vegas </span>•
+					</a>
+					<a class="text-dark" href={{ path('kyoto') }}>
+						<span class="">Kyoto </span>•
+					</a>
+					<a class="text-dark" href={{ path('sydney') }}>
+						<span class="">Sydney </span>•
+					</a>
+					<a class="text-dark" href={{ path('hongkong') }}>
+						<span class="">Hong Kong</span>
+					</a>
+				</div>
 			</div>
 		</nav>
 	</body>
