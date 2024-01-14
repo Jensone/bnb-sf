@@ -1,24 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Séjournez à {{ city}}{% endblock %}
+{% block title %}Séjournez à
+	{{ city}}
+{% endblock %}
 
 {% block body %}
-{{ dump(rooms) }}
-<h1 class="text-center my-5">Où souhaitez-vous séjourner à {{ city }} ?</h1>
-<div class="row gap-3 justify-content-center" id="rooms">
-{% for item in rooms %}
-    <a href="#" class="col-lg-3 col-md-4 col-sm-6 text-decoration-none">
-        <img src={{ item.image }} class="img-fluid rounded-4">
-        <div class="d-flex flex-column mt-3 lh-1">
-            <p class="fs-6 fw-bold text-dark">{{ item.name }}</p>
-            <p class="text-muted">{{ item.city }}</p>
-            <div class="d-flex gap-2 mb-2 align-items-center">
-                <img src={{ item.host.image }} width="32" class="image-fluid rounded-pill">
-                <p class="text-muted">{{ item.host.firstname }}</p>
-            </div>
-            <p class="text-muted">00€ par nuit</p>
-        </div>
-    </a>
-{% endfor %}
-</div>
+	{{ dump(rooms) }}
+	<h1 class="text-center my-5">Où souhaitez-vous séjourner à
+		{{ city }}
+		?</h1>
+	<div class="row gap-3 justify-content-center" id="rooms">
+		<div class="row">
+			{% for item in rooms %}
+				<a href="#" class="col-lg-3 col-md-4 col-sm-6 text-decoration-none">
+					<img src={{ item.image }} class="img-fluid rounded-4">
+					<div class="d-flex flex-column mt-3 lh-1">
+						<p class="fs-6 fw-bold text-dark">{{ item.name }}</p>
+						<p class="text-muted">{{ item.city }}</p>
+						<p class="d-flex gap-2 mb-2 align-items-center">
+							<img src={{ item.host.image }} width="32" class="image-fluid rounded-pill">
+							<span class="text-muted">{{ item.host.firstname }}</span>
+						</p>
+						<p class="text-muted">00€ par nuit</p>
+					</div>
+				</a>
+			{% endfor %}
+
+		</div>
+	</div>
 {% endblock %}
