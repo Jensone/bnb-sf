@@ -46,7 +46,7 @@ class AppFixtures extends Fixture
         }
 
         // Set rooms
-        $cities = ['paris', 'las-vegas', 'kyoto', 'sydney', 'hong-kong'];
+        $cities = ['paris', 'las vegas', 'kyoto', 'sydney', 'hong kong'];
         for ($i = 0; $i < 100; $i++) {
             
             $room = new Room();
