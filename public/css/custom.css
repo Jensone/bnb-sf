@@ -65,11 +65,11 @@ span.active,
 .hongkong,
 .lasvegas,
 .sydney,
-.kyoto {
+.kyoto,
+.top-profile {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 
@@ -133,6 +133,14 @@ span.active,
 
 .bnb-shadow-text {
     text-shadow: 0 0 1rem rgba(0, 0, 0, 1);
+}
+
+
+/* Profile */
+.top-profile {
+    height: 200px;
+    background-image: url('/images/profile-bg.jpg');
+    background-position: bottom center;
 }
 
 /* Media Queries */
