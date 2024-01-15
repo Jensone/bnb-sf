@@ -23,7 +23,7 @@ class AppFixtures extends Fixture
             ->setFirstname('Admin')
             ->setLastname('Martin')
             ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2')
-            ->setImage($faker->randomElement(['default-1', 'default-2']))
+            ->setImage('/images/default-2.jpg')
             ->setAddress($faker->address)
             ->setCity($faker->city)
             ->setCountry($faker->country)
@@ -40,7 +40,7 @@ class AppFixtures extends Fixture
                 ->setLastname($faker->lastName)
                 ->setBirthyear($faker->numberBetween(1980, 2000))
                 ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2')
-                ->setImage($faker->randomElement(['default-1', 'default-2']))
+                ->setImage(rand(0,1) ? '/images/default-1.jpg' : '/images/default-2.jpg')
                 ->setAddress($faker->address)
                 ->setCity($faker->city)
                 ->setCountry($faker->country)
@@ -82,7 +82,7 @@ class AppFixtures extends Fixture
             }
 
             // Set users with favorites
-            if ($i > 70) {
+            if ($i > 70) {                
                 $user = new User();
                 $user->setEmail('user' . $i . '@user.fr')
                     ->setRoles(['ROLE_USER'])
@@ -90,7 +90,7 @@ class AppFixtures extends Fixture
                     ->setLastname($faker->lastName)
                     ->setBirthyear($faker->numberBetween(1980, 2000))
                     ->setPassword('$2y$13$wqXiXE8U6QhYtIRJFedLA.MkNVmDzn89jVz5CBYENUOwHfAlyYNG2')
-                    ->setImage($faker->randomElement(['default-1', 'default-2']))
+                    ->setImage(rand(0,1) ? '/images/default-1.jpg' : '/images/default-2.jpg')
                     ->setAddress($faker->address)
                     ->setCity($faker->city)
                     ->setCountry($faker->country)
@@ -104,7 +104,7 @@ class AppFixtures extends Fixture
                 $reviewDate = $faker->dateTimeBetween('-4 months');
                 $review->setRating(mt_rand(1, 5))
                     ->setTitle($faker->word(3, true))
-                    ->setComment($faker->paragraphs(1, true))
+                    ->setComment($faker->text(255))
                     ->setAuthor($user)
                     ->setRoom($room)
                     ->setCreatedAt($reviewDate)
